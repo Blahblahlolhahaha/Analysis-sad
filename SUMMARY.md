@@ -7,3 +7,5 @@
   * [Grey Cat The Flag](ctf-challenges/grey-cat-the-flag/README.md)
     * [Angry Robot](ctf-challenges/grey-cat-the-flag/angry-robot.md)
     * [Flappy-o](ctf-challenges/grey-cat-the-flag/flappy-o.md)
+    * [Runtime Environment](ctf-challenges/grey-cat-the-flag/runtime-environment.md)
+    * [Runtime Environment 2](ctf-challenges/grey-cat-the-flag/runtime-environment-2.md)

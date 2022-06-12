@@ -4,7 +4,7 @@ Grey Cat The Flag is a CTF competition organised by NUS Greyhats and the Nationa
 
 &#x20;
 
-![pAin ](<../../.gitbook/assets/image (17) (1).png>)
+![pAin ](<../../.gitbook/assets/image (17) (1) (1).png>)
 
 We only managed to secure 15th place overall and 14th place in Singapore XDDD.&#x20;
 

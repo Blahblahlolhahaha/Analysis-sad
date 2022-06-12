@@ -18,15 +18,15 @@ nc challs.nusgreyhats.org 10523
 
 In this challenge, we were given 100 64 bit elf binaries which we need to find the password for&#x20;
 
-![](<../../.gitbook/assets/image (18) (1).png>)
+![](<../../.gitbook/assets/image (18) (1) (1).png>)
 
-![](<../../.gitbook/assets/image (12) (1).png>)
+![](<../../.gitbook/assets/image (12) (1) (1).png>)
 
 Here I send it back to a decompiler and found out that all of these files are similar, with the `main` function taking input from `stdin` and passing it to an encode function and comparing it with another string.&#x20;
 
-![Checking function](<../../.gitbook/assets/image (1).png>)
+![Checking function](<../../.gitbook/assets/image (1) (1).png>)
 
-![Encoding function](<../../.gitbook/assets/image (8) (1).png>)
+![Encoding function](<../../.gitbook/assets/image (8) (1) (1).png>)
 
 Basically, the 2 functions can be simplified into the following python script:
 
