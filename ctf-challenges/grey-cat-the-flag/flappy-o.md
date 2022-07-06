@@ -36,7 +36,7 @@ Basically here it shows all the handlers for the game from processing user input
 
 Below is the flag function:
 
-![](<../../.gitbook/assets/image (11) (1).png>)
+![](<../../.gitbook/assets/image (11) (1) (1).png>)
 
 For flag1, one character will be decrypted everytime `actualscore` is incremented while for flag2, 4 characters will be decrypted everytime `actualscore` is incremented by 10000.
 
@@ -44,7 +44,7 @@ What is important to note is that lfsr2 is also run everytime `actualscore` is i
 
 ![](<../../.gitbook/assets/image (9).png>)
 
-![](<../../.gitbook/assets/image (21) (1).png>)
+![](<../../.gitbook/assets/image (21) (1) (1).png>)
 
 lfsr2 is a seed generator that change everytime it is run, hence when solving flappy o2, this information is important also :D
 
@@ -58,15 +58,15 @@ For this writeup, I will be showing how to patch the game to get the flag (pAin)
 
 For flappy o, simply change ++isScore in the game loop to score+= 8 by patching the following instructions:
 
-![before](<../../.gitbook/assets/image (17) (1).png>)
+![before](<../../.gitbook/assets/image (17) (1) (1).png>)
 
 to ->
 
-![after!](<../../.gitbook/assets/image (15).png>)
+![after!](<../../.gitbook/assets/image (15) (1).png>)
 
 Voila!
 
-![Im lazy to type the flag out](<../../.gitbook/assets/image (10) (1).png>)
+![Im lazy to type the flag out](<../../.gitbook/assets/image (10) (1) (1).png>)
 
 flag: whatever is in that picture above^
 
@@ -82,7 +82,7 @@ This one is a bit more tricky as we nid to account for the 10000 points sadness.
 
 The first step is the easiest part of it:
 
-![](<../../.gitbook/assets/image (12) (1).png>)
+![](<../../.gitbook/assets/image (12) (1) (1).png>)
 
 For the 2nd step, I had to change the `sar 3` for score to `imul 0x2710`to make it:
 
@@ -94,13 +94,13 @@ and also remove the anticheat check as actual score will increment by 10000 by t
 
 ![](<../../.gitbook/assets/image (7) (1).png>)
 
-![](<../../.gitbook/assets/image (16).png>)
+![](<../../.gitbook/assets/image (16) (1).png>)
 
 to patch out the check, I changed the jz to an unconditional jump `jmp` to always execute the flag decryption function no matter what.&#x20;
 
-![before](<../../.gitbook/assets/image (18) (1).png>)
+![before](<../../.gitbook/assets/image (18) (1) (1).png>)
 
-![after](<../../.gitbook/assets/image (20) (1).png>)
+![after](<../../.gitbook/assets/image (20) (1) (1).png>)
 
 For the last step, I have to remove the first flag decryption function to make way for the for loop I have to insert in to run lfsr2 10000 times. Heres the asm instructions I used:
 

@@ -18,9 +18,9 @@ nc challs.nusgreyhats.org 10523
 
 In this challenge, we were given 100 64 bit elf binaries which we need to find the password for&#x20;
 
-![](<../../.gitbook/assets/image (18) (1) (1).png>)
+![](<../../.gitbook/assets/image (18) (1) (1) (1).png>)
 
-![](<../../.gitbook/assets/image (12) (1) (1).png>)
+![](<../../.gitbook/assets/image (12) (1) (1) (1).png>)
 
 Here I send it back to a decompiler and found out that all of these files are similar, with the `main` function taking input from `stdin` and passing it to an encode function and comparing it with another string.&#x20;
 
@@ -67,11 +67,11 @@ In radare, i did the following steps:
 
 Here we can see the strings! But to only just read the string we will have to use `ps @rsp+offsetOfString` instead to read the strings. The offsets for the strings are 40 and 72 respectively:
 
-![](<../../.gitbook/assets/image (16) (1).png>)
+![](<../../.gitbook/assets/image (16) (1) (1).png>)
 
 Voila! Now we just have to read `mod` from the file which is 2 bytes long and usually contains at either offset 0x11c2 or 0x11c4 (except for one file reeeeeee)
 
-![For this file it is at 0x11c2!](<../../.gitbook/assets/image (15) (1).png>)
+![For this file it is at 0x11c2!](<../../.gitbook/assets/image (15) (1) (1).png>)
 
 Then after getting the required values for each file, the only thing left is to brute force the password. Since the input has to be ASCII characters between 0x20 and 0x7f here's the script to brute force:
 

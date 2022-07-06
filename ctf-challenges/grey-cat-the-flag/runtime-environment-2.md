@@ -16,11 +16,11 @@ Why? I realised the challenge was written in Haskell, a language that I did not 
 
 Like RE 1, we were given a binary and an encoded file. However, this time the encoded file is not readable:
 
-![jeez](<../../.gitbook/assets/image (22).png>)
+![jeez](<../../.gitbook/assets/image (22) (1).png>)
 
 And by looking at the disassembler, I can confirm that the program is written in Haskell due to the presence of `hs_main` being called in `main`:
 
-![](<../../.gitbook/assets/image (23).png>)
+![](<../../.gitbook/assets/image (23) (1).png>)
 
 When i ran the program, I realised that the program gave different outputs for the same input, meaning that there is something else involved during the encoding process:
 
