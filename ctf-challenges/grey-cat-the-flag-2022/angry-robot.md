@@ -18,7 +18,7 @@ nc challs.nusgreyhats.org 10523
 
 In this challenge, we were given 100 64 bit elf binaries which we need to find the password for&#x20;
 
-![](<../../.gitbook/assets/image (18) (1) (1) (1).png>)
+<div align="left"><img src="../../.gitbook/assets/image (18) (1) (1) (1).png" alt=""></div>
 
 ![](<../../.gitbook/assets/image (12) (1) (1) (1).png>)
 
@@ -26,7 +26,7 @@ Here I send it back to a decompiler and found out that all of these files are si
 
 ![Checking function](<../../.gitbook/assets/image (1) (1).png>)
 
-![Encoding function](<../../.gitbook/assets/image (8) (1) (1).png>)
+<div align="left"><img src="../../.gitbook/assets/image (8) (1) (1).png" alt="Encoding function"></div>
 
 Basically, the 2 functions can be simplified into the following python script:
 
@@ -57,13 +57,13 @@ In radare, i did the following steps:
 
 * Put a breakpoint at the encode function. (address can be found using the disassembler)
 
-![](<../../.gitbook/assets/image (5).png>)
+<div align="left"><img src="../../.gitbook/assets/image (5) (1).png" alt=""></div>
 
 *   Run the code by using dc and then read rsp when the program reaches the breakpoint:
 
 
 
-![](<../../.gitbook/assets/image (4).png>)
+<div align="left"><img src="../../.gitbook/assets/image (4) (1).png" alt=""></div>
 
 Here we can see the strings! But to only just read the string we will have to use `ps @rsp+offsetOfString` instead to read the strings. The offsets for the strings are 40 and 72 respectively:
 
@@ -143,6 +143,6 @@ while True:
         sock.send(yes[bad].encode() + b"\n")
 ```
 
-![](<../../.gitbook/assets/image (6) (1).png>)
+![](<../../.gitbook/assets/image (6) (1) (1).png>)
 
 Flag: grey{A11\_H4il\_SkyN3t}

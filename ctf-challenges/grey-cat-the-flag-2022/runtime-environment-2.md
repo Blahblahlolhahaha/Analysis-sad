@@ -16,15 +16,15 @@ Why? I realised the challenge was written in Haskell, a language that I did not 
 
 Like RE 1, we were given a binary and an encoded file. However, this time the encoded file is not readable:
 
-![jeez](<../../.gitbook/assets/image (22) (1).png>)
+<div align="left"><img src="../../.gitbook/assets/image (22) (1).png" alt="jeez"></div>
 
 And by looking at the disassembler, I can confirm that the program is written in Haskell due to the presence of `hs_main` being called in `main`:
 
-![](<../../.gitbook/assets/image (23) (1).png>)
+![](<../../.gitbook/assets/image (23) (1) (1).png>)
 
 When i ran the program, I realised that the program gave different outputs for the same input, meaning that there is something else involved during the encoding process:
 
-![](<../../.gitbook/assets/image (7).png>)
+![](<../../.gitbook/assets/image (7) (1).png>)
 
 From there, I ran hsdecomp on the program to attempt to decompile the program back to the original haskell code and figure out what happens during the program:
 

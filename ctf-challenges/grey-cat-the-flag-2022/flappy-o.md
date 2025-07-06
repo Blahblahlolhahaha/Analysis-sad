@@ -26,25 +26,25 @@ MD5 (flappybird) = f1f36482358dc35992f076e6ea483df8
 
 In this challenge, we were given a 64 bit ELF file to work on and make the game show the flag for us:
 
-![Flappy Bird!](<../../.gitbook/assets/image (1).png>)
+![Flappy Bird!](<../../.gitbook/assets/image (1) (2).png>)
 
 Opening the program in a decompiler will show us the game loop:
 
-![](<../../.gitbook/assets/image (6).png>)
+![](<../../.gitbook/assets/image (6) (1).png>)
 
 Basically here it shows all the handlers for the game from processing user input to drawing the current state of the game. For this challenge, I will probably be only interested in the updateAndDrawFlag since it probably relates to the flag.
 
 Below is the flag function:
 
-![](<../../.gitbook/assets/image (11) (1) (1).png>)
+<div align="left"><img src="../../.gitbook/assets/image (11) (1) (1).png" alt=""></div>
 
 For flag1, one character will be decrypted everytime `actualscore` is incremented while for flag2, 4 characters will be decrypted everytime `actualscore` is incremented by 10000.
 
 What is important to note is that lfsr2 is also run everytime `actualscore` is incremented which uses some global variables which will affect genFlag2 which is the decrypt function for flag2:
 
-![](<../../.gitbook/assets/image (9).png>)
+![](<../../.gitbook/assets/image (9) (1).png>)
 
-![](<../../.gitbook/assets/image (21) (1) (1).png>)
+![](<../../.gitbook/assets/image (21) (1) (1) (1).png>)
 
 lfsr2 is a seed generator that change everytime it is run, hence when solving flappy o2, this information is important also :D
 
@@ -58,11 +58,11 @@ For this writeup, I will be showing how to patch the game to get the flag (pAin)
 
 For flappy o, simply change ++isScore in the game loop to score+= 8 by patching the following instructions:
 
-![before](<../../.gitbook/assets/image (17) (1) (1).png>)
+<div align="left"><img src="../../.gitbook/assets/image (17) (1) (1).png" alt="before"></div>
 
 to ->
 
-![after!](<../../.gitbook/assets/image (15) (1).png>)
+<div align="left"><img src="../../.gitbook/assets/image (15) (1).png" alt="after!"></div>
 
 Voila!
 
@@ -82,7 +82,7 @@ This one is a bit more tricky as we nid to account for the 10000 points sadness.
 
 The first step is the easiest part of it:
 
-![](<../../.gitbook/assets/image (12) (1) (1).png>)
+<div align="left"><img src="../../.gitbook/assets/image (12) (1) (1).png" alt=""></div>
 
 For the 2nd step, I had to change the `sar 3` for score to `imul 0x2710`to make it:
 
@@ -92,15 +92,15 @@ actualscore = score * 10000
 
 and also remove the anticheat check as actual score will increment by 10000 by tick which is forbidden by the check as it only allows actual score to be incremented by 1 per tick:
 
-![](<../../.gitbook/assets/image (7) (1).png>)
+![](<../../.gitbook/assets/image (7) (1) (1).png>)
 
-![](<../../.gitbook/assets/image (16) (1).png>)
+<div align="left"><img src="../../.gitbook/assets/image (16) (1).png" alt=""></div>
 
 to patch out the check, I changed the jz to an unconditional jump `jmp` to always execute the flag decryption function no matter what.&#x20;
 
-![before](<../../.gitbook/assets/image (18) (1) (1).png>)
+<div align="left"><img src="../../.gitbook/assets/image (18) (1) (1).png" alt="before"></div>
 
-![after](<../../.gitbook/assets/image (20) (1) (1).png>)
+<div align="left"><img src="../../.gitbook/assets/image (20) (1) (1).png" alt="after"></div>
 
 For the last step, I have to remove the first flag decryption function to make way for the for loop I have to insert in to run lfsr2 10000 times. Heres the asm instructions I used:
 
@@ -118,7 +118,7 @@ This will form the for loop to call lfsr2 9999 times. Together with the lfsr2 th
 
 Heres the final decompiled version of the patched flag function:
 
-![](<../../.gitbook/assets/image (14) (1).png>)
+<div align="left"><img src="../../.gitbook/assets/image (14) (1).png" alt=""></div>
 
 Running the patched version will give us the flag:
 
