@@ -12,3 +12,5 @@
     * [Runtime Environment 2](ctf-challenges/grey-cat-the-flag-2022/runtime-environment-2.md)
   * [Grey Cat The Flag 2025](ctf-challenges/grey-cat-the-flag-2025/README.md)
     * [Elden Ring](ctf-challenges/grey-cat-the-flag-2025/elden-ring.md)
+  * [Other CTF Challenges](ctf-challenges/other-ctf-challenges/README.md)
+    * [Sekai Bank](ctf-challenges/other-ctf-challenges/sekai-bank.md)
